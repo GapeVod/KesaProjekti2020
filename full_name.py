@@ -11,11 +11,11 @@ print("\tPython")
 print("Languages:\nPython\nC\nJavaScript")
 print("Languages:\n\tPython\n\tC\n\tJavaScript")
 
-favourite_language = 'Python '
+favourite_language = "'Python '"
 print(favourite_language)
 print(favourite_language.rstrip())
 
-favourite_language2 = ' python '
+favourite_language2 = "' python '"
 print(favourite_language2.rstrip())
 print(favourite_language2.lstrip())
 print(favourite_language2.strip())
