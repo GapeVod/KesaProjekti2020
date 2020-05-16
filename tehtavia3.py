@@ -34,6 +34,8 @@ print(messageE)
 print(messageM)
 print(messageA)
 
+print(len(vierasLista))
+
 #3-5
 eiPaase = f"Sadly, {vierasLista[2].title()} can't come to your dinner party."
 print(eiPaase)
@@ -48,6 +50,8 @@ messageA = f"\nYou, {vierasLista[2].title()} have been invited to Ville's dinner
 print(messageE)
 print(messageM)
 print(messageA)
+
+print(len(vierasLista))
 
 #3-6
 messageE = f"Hello, {vierasLista[0].title()} we're pleased to inform you that the dinner tables gotten bigger!"
@@ -76,6 +80,8 @@ print(messageRB)
 print(messageR)
 print(messageB)
 
+print(len(vierasLista))
+
 #3-7
 poppedVieras = vierasLista.pop()
 messagePOP = f"The new table hasn't arrvied yet so your'e out of the dinner party {poppedVieras.title()}"
@@ -90,3 +96,64 @@ poppedVieras = vierasLista.pop()
 messagePOP = f"The new table hasn't arrvied yet so your'e out of the dinner party {poppedVieras.title()}"
 print(messagePOP)
 print(vierasLista)
+
+print(len(vierasLista))
+
+#3-8
+kohteet = ['suomi', 'ruotsi', 'norja', 'tanska', 'islanti']
+print(kohteet)
+
+print(sorted(kohteet))
+print(kohteet)
+
+print(sorted(kohteet, reverse=True))
+print(kohteet)
+
+kohteet.reverse()
+print(kohteet)
+kohteet.reverse()
+print(kohteet)
+
+kohteet.sort()
+print(kohteet)
+kohteet.sort(reverse = True)
+print(kohteet)
+
+#3-9
+#pituus funktiot lisätty 3-4 - 3-7 koodiin tehtävän mukaisesti
+#
+#
+
+#3-10
+letters = ['a', 'b', 'y', 'g']
+print(letters)
+
+messageLetters = f"The first letter of the alphabet is {letters[0].title()}."
+print(messageLetters)
+
+del letters[1]
+print(letters)
+
+letters.insert(1, 'w')
+letters.append('x')
+print(letters)
+
+poppedLetter = letters.pop()
+messagePL = f"{poppedLetter.title()} was removed"
+
+print(sorted(letters))
+print(sorted(letters, reverse = True))
+
+letters.reverse()
+print(letters)
+letters.reverse()
+print(letters)
+
+letters.sort()
+print(letters)
+letters.sort(reverse = True)
+print(letters)
+
+#3-11
+#print(letters[6])
+#pakko olla kommentoituna(tehtävässä piti tahalleen tuottaa index errori)
