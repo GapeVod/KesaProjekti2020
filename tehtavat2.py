@@ -1,3 +1,4 @@
+#kommentointi tehtävän tekemistä kommentoimalla asioita
 first_name = "ville"
 last_name = "jestila"
 full_name = f"{first_name} {last_name}"
