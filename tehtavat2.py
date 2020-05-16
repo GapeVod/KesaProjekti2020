@@ -16,11 +16,28 @@ message2 = f'{famous_name.title()} once said, "A person who never made a mistake
 
 print(message2)
 
-first_name2 = " mikko\n"
-last_name2 = "\tmallikas "
+first_name2 = " mikko\n "
+last_name2 = " \tmallikas "
 full_name2 = f"{first_name2} {last_name2}"
 
 print(full_name2)
-print({full_name2.lstrip()})
-print({full_name2.rstrip()})
-print({full_name2.strip()})
+print(full_name2.lstrip())
+print(full_name2.rstrip())
+print(full_name2.strip())
+
+name = " mikko "
+
+print(name)
+print(name.lstrip())
+print(name.rstrip())
+print(name.strip())
+
+print(5+3)
+print(10-2)
+print(2*4)
+print(16/2)
+
+#favouriteNumber = 9
+favouriteNumber = f"{9}"
+message3 = f"Ville's favourite number is {favouriteNumber}"
+print(message3)
