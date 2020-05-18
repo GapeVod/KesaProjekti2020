@@ -20,3 +20,12 @@ print(cars)
 cars.reverse()
 print(cars)
 print(len(cars))
+
+cars = ['bmw', 'audi', 'toyota', 'subaru']
+cars.sort()
+
+for car in cars:
+	if car == 'bmw':
+		print(car.upper())
+	else:
+		print(car.title())
