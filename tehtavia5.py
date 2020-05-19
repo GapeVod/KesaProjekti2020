@@ -268,8 +268,7 @@ for new_user in new_users:
 	else:
 		print(f"the user name, {new_user} is available.")
 
-#5-10
-
+#5-11
 num_list = [value + 1 for value in range (0, 9)]
 
 for num in num_list:
