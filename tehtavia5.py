@@ -238,11 +238,51 @@ else:
 	print("not in menu")
 
 #5-8
-user_name = 'name1'
+user_name = 'admin'
 user_list = ['name1', 'name2', 'name3', 'name4', 'admin']
 
-for user in user_name:
-	if user_name.lower() == 'admin':
-		print("Hello admin")
+if user_name == 'admin':
+	print("hello admin")
+
+for user in user_list:
+	if user != 'admin':
+		print(f"hello, {user}")
+
+#5-9
+user_list = ['name1', 'name2', 'name3', 'name4', 'admin']
+
+for user in user_list:
+	if user != 'admin':
+		print(f"hello, {user}")
 	else:
-		print(f"hello {user_list}")
+		print("userlist is empty")
+
+#5-10
+current_users = ['c_user1', 'c_user2', 'c_user3', 'c_user4', 'c_user5']
+
+new_users = ['n_user1', 'n_user2', 'n_user3', 'c_user1', 'c_user2']
+
+for new_user in new_users:
+	if new_user in current_users:
+		print(f"You have to find a new user name, {new_user}.")
+	else:
+		print(f"the user name, {new_user} is available.")
+
+#5-10
+
+num_list = [value + 1 for value in range (0, 9)]
+
+for num in num_list:
+	#print(num)
+	if num == 1:
+		print(f"{num}st")
+	elif num == 2:
+		print(f"{num}nd")
+	elif num == 3:
+		print(f"{num}rd")
+	else:
+		print(f"{num}th")
+
+
+
+
