@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30104.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "t_shirt", "t_shirt.pyproj", "{818F2D61-6597-4C76-AF38-B2B7F5915FD1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{818F2D61-6597-4C76-AF38-B2B7F5915FD1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{818F2D61-6597-4C76-AF38-B2B7F5915FD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E1E7C5DC-3EF8-406F-A58A-3AAF8ED1AB76}
+	EndGlobalSection
+EndGlobal
