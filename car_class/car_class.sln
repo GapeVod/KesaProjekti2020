@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30104.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "car_class", "car_class.pyproj", "{A2A352E5-ED69-4F15-ABAC-9C20CEBC52FF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A2A352E5-ED69-4F15-ABAC-9C20CEBC52FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2A352E5-ED69-4F15-ABAC-9C20CEBC52FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9354C701-A026-40C3-AC36-0C18ADD59844}
+	EndGlobalSection
+EndGlobal
