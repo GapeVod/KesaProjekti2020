@@ -35,6 +35,7 @@ class AlienInvasion:
         #Make the Play button.
         self.play_button = Button(self, "Play")
 
+
     def run_game(self):
     	"""Start the mainloop for the game."""
     	while True:
@@ -131,9 +132,8 @@ class AlienInvasion:
     	self.bullets.update()
 
     	#Get rid of bullets that have disappeared.
-    	for bullet in self.bullets.copy():
-    		if bullet.rect.bottom <= 0:
-    			self.bullets.remove(bullet)
+    	if len(self.bullets) == self.settings.bullets_allowed:
+    		self._ship_hit()
 
     	self._check_bullet_alien_collisions()
 
@@ -154,28 +154,12 @@ class AlienInvasion:
     	#Create an alien and find the number of aliens in a row.
     	#Spacing between each alien is equal to one alien width
     	alien = Alien(self)
-    	alien_width, alien_height = alien.rect.size
-    	available_space_x = self.settings.screen_width - (2 * alien_width)
-    	number_aliens_x = available_space_x = available_space_x // (2 * alien_width)
+    	self._create_alien()
 
-    	#Determine the number of rows of aliens that fit on the screen.
-    	ship_height = self.ship.rect.height
-    	available_space_y = (self.settings.screen_height -
-    		(3 * alien_height) - ship_height)
-    	number_rows = available_space_y // (2 * alien_height)
-
-    	#Create the first row of aliens.
-    	for row_number in range(number_rows):
-    		for alien_number in range(number_aliens_x):
-    			self._create_alien(alien_number, row_number)
-
-    def _create_alien(self, alien_number, row_number):
+    def _create_alien(self):
     	"""Create an alien and place it in the row."""
     	alien = Alien(self)
-    	alien_width, alien_height = alien.rect.size
-    	alien.x = alien_width + 2 * alien_width * alien_number
-    	alien.rect.x = alien.x
-    	alien.rect.y = alien.rect.height + 2 * alien.rect.height * row_number
+
     	self.aliens.add(alien)
 
     def _update_aliens(self):
@@ -188,13 +172,14 @@ class AlienInvasion:
     		self._ship_hit()
 
     	#Look for aliens hitting the bottom of the screen.
-    	self._check_aliens_bottom()
+    	#self._check_aliens_bottom()
 
     def _check_fleet_edges(self):
     	"""Respond appropriately if any aliens have reaches an edge."""
     	for alien in self.aliens.sprites():
     		if alien.check_edges():
     			self._change_fleet_direction()
+    			self.settings.increase_speed()
     			break
 
     def _change_fleet_direction(self):
@@ -222,15 +207,6 @@ class AlienInvasion:
     	else:
     		self.stats.game_active = False
     		pygame.mouse.set_visible(True)
-
-    def _check_aliens_bottom(self):
-    	"""Check if any aliens have reached the bottom of the screen."""
-    	screen_rect = self.screen.get_rect()
-    	for alien in self.aliens.sprites():
-    		if alien.rect.bottom >= screen_rect.bottom:
-    			#Treat this the same as if the ship got hit.
-    			self._ship_hit()
-    			break
 
 
     def _update_screen(self):
