@@ -5,10 +5,16 @@ import pygame
 
 from settings import Settings
 from game_stats import GameStats
+from scoreboard import Scoreboard
 from button import Button
+from easy_button import EasyButton
+from hard_button import HardButton
 from ship import Ship
 from bullet import Bullet
 from alien import Alien
+
+hard_mode = False
+easy_mode = False
 
 class AlienInvasion:
     """Overall class to manage game assets and behavior."""
@@ -24,7 +30,9 @@ class AlienInvasion:
         pygame.display.set_caption("Alien Invasion")
 
         #Create an instance to store game statistcs.
+        #and create a scoreboard
         self.stats = GameStats(self)
+        self.sb = Scoreboard(self)
 
         self.ship = Ship(self)
         self.bullets = pygame.sprite.Group()
@@ -33,7 +41,9 @@ class AlienInvasion:
         self._create_fleet()
 
         #Make the Play button.
-        self.play_button = Button(self, "Play")
+        self.easy_button = EasyButton(self, "Easy")
+        self.play_button = Button(self, "Normal")
+        self.hard_button = HardButton(self, "Hard")
 
     def run_game(self):
     	"""Start the mainloop for the game."""
@@ -96,8 +106,34 @@ class AlienInvasion:
     def _check_play_button(self, mouse_pos):
     	"""Start a new game when the player clicks Play."""
     	button_clicked = self.play_button.rect.collidepoint(mouse_pos)
+    	easy_clicked = self.easy_button.rect.collidepoint(mouse_pos)
+    	hard_clicked = self.hard_button.rect.collidepoint(mouse_pos)
     	if button_clicked and not self.stats.game_active:
     		self._start_game()
+    		#Reset the game statistics.
+    		#self.stats.reset_stats()
+    		#self.stats.game_active = True
+    		self.sb.prep_score()
+    		self.sb.prep_level()
+    		self.sb.prep_ships()
+    	elif easy_clicked and not self.stats.game_active:
+    		self._start_game()
+    		easy_mode = True
+    		#Reset the game statistics.
+    		#self.stats.reset_stats()
+    		#self.stats.game_active = True
+    		self.sb.prep_score()
+    		self.sb.prep_level()
+    		self.sb.prep_ships()
+    	elif hard_clicked and not self.stats.game_active:
+    		self._start_game()
+    		hard_mode = True
+    		#Reset the game statistics.
+    		#self.stats.reset_stats()
+    		#self.stats.game_active = True
+    		self.sb.prep_score()
+    		self.sb.prep_level()
+    		self.sb.prep_ships()
 
     def _start_game(self):
     	"""Start game."""
@@ -111,6 +147,8 @@ class AlienInvasion:
     	#Get rid of any remaining aliens and bullets.
     	self.aliens.empty()
     	self.bullets.empty()
+    	hard_mode = False
+    	easy_mode = False
 
     	#Create a new fleet and center the ship.
     	self._create_fleet()
@@ -143,11 +181,22 @@ class AlienInvasion:
     	collisions = pygame.sprite.groupcollide(
     		self.bullets, self.aliens, True, True)
 
+    	if collisions:
+    		for aliens in collisions.values():
+    			self.stats.score += self.settings.alien_points * len(aliens)
+    		self.sb.prep_score()
+    		self.sb.check_high_score()
+
     	if not self.aliens:
     		#Destroy existing bulelts and create a new fleet.
     		self.bullets.empty()
     		self._create_fleet()
-    		self.settings.increase_speed()
+    		if easy_mode == False:
+    			self.settings.increase_speed()
+
+    		#Increase level.
+    		self.stats.level += 1
+    		self.sb.prep_level()
 
     def _create_fleet(self):
     	"""Create the fleet of aliens."""
@@ -195,6 +244,8 @@ class AlienInvasion:
     	for alien in self.aliens.sprites():
     		if alien.check_edges():
     			self._change_fleet_direction()
+    			if hard_mode == True:
+    				self.settings.increase_speed()
     			break
 
     def _change_fleet_direction(self):
@@ -241,9 +292,14 @@ class AlienInvasion:
     		bullet.draw_bullet()
     	self.aliens.draw(self.screen)
 
+    	#Draw the score information.
+    	self.sb.show_score()
+
     	#Draw the play button if the game is inactive.
     	if not self.stats.game_active:
     		self.play_button.draw_button()
+    		self.easy_button.draw_button()
+    		self.hard_button.draw_button()
 
     	# Make the most recently drawn screen visible.
     	pygame.display.flip()
