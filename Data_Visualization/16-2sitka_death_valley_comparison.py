@@ -4,8 +4,8 @@ from datetime import datetime
 import matplotlib.pyplot as plt
 
 
-death_valley = 'death_valley_2018_simple.csv'
-sitka = 'sitka_weather_2018_simple.csv'
+death_valley = 'Data_Visualization\death_valley_2018_simple.csv'
+sitka = 'Data_Visualization\sitka_weather_2018_simple.csv'
 
 with open(death_valley) as df:
 	reader_death = csv.reader(df)
