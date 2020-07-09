@@ -12,8 +12,8 @@ with open(filename) as f:
 	header_row = next(reader)
 	#print(header_row)
 
-	for index, column_header in enumerate(header_row):
-		print(index, column_header)
+	#for index, column_header in enumerate(header_row):
+	#	print(index, column_header)
 
 	# Get dates, high and low temperatures from this file.
 	dates, highs, lows = [], [], []
